@@ -41,7 +41,7 @@
           <div
             class="flex items-center gap-2 bg-[#41ff6b1a] px-6 py-3 rounded-3xl"
           >
-            <p class="font-bold"><span>100</span></p>
+            <p class="font-bold"><span id="coin">100</span></p>
             <img src="./assets/coin.png" alt="" class="w-6" />
           </div>
           <p class="bg-[#00a63e] px-9 py-3 rounded-3xl text-white font-bold">
@@ -71,6 +71,7 @@
         id="emergency-container"
         class="mt-14 w-11/12 mx-auto grid grid-cols-12 gap-8"
       >
+        <!-- emergency number -->
         <section id="emergency-box" class="col-span-9">
           <!-- card 1 -->
           <div id="card-container" class="grid grid-cols-3 gap-5">
@@ -86,7 +87,7 @@
               <h1 class="font-bold text-[24px] mt-4">
                 National Emergency Number
               </h1>
-              <p class="text-gray-500">National Emergency</p>
+              <p class="text-gray-500">National Emergency Service</p>
 
               <p class="font-bold text-[24px] mt-6">999</p>
               <button class="bg-[#f2f2f2] px-4 py-2 rounded-3xl text-[18px]">
@@ -98,7 +99,9 @@
                 >
                   <i class="fa-regular fa-copy"></i> Copy
                 </button>
-                <button class="btn bg-[#00a63e] text-white w-1/2 rounded-lg">
+                <button
+                  class="btn bg-[#00a63e] text-white w-1/2 rounded-lg call-btn"
+                >
                   <i class="fa-solid fa-phone"></i> Call
                 </button>
               </div>
@@ -126,7 +129,9 @@
                 >
                   <i class="fa-regular fa-copy"></i> Copy
                 </button>
-                <button class="btn bg-[#00a63e] text-white w-1/2 rounded-lg">
+                <button
+                  class="btn bg-[#00a63e] text-white w-1/2 rounded-lg call-btn"
+                >
                   <i class="fa-solid fa-phone"></i> Call
                 </button>
               </div>
@@ -154,7 +159,9 @@
                 >
                   <i class="fa-regular fa-copy"></i> Copy
                 </button>
-                <button class="btn bg-[#00a63e] text-white w-1/2 rounded-lg">
+                <button
+                  class="btn bg-[#00a63e] text-white w-1/2 rounded-lg call-btn"
+                >
                   <i class="fa-solid fa-phone"></i> Call
                 </button>
               </div>
@@ -163,11 +170,29 @@
         </section>
 
         <!-- History -->
-        <aside
-          id="history-box"
-          class="col-span-3 border-2 border-green-500 bg-white"
-        >
-          <h1>History</h1>
+        <aside id="history-box" class="col-span-3 bg-white p-3">
+          <div class="flex justify-between items-center">
+            <h1 class="font-bold text-[20px]">
+              <i class="fa-regular fa-clock"></i
+              ><span class="ml-3">Call History</span>
+            </h1>
+            <button
+              class="bg-[#00a63e] px-9 py-3 rounded-3xl text-white font-medium"
+            >
+              Clear
+            </button>
+          </div>
+          <div id="history-container">
+            <div
+              class="mt-5 flex justify-between items-center p-5 bg-[#fafafa] rounded-xl"
+            >
+              <div>
+                <p class="font-semibold text-[18px]">Fire Service Number</p>
+                <p>999</p>
+              </div>
+              <p>time</p>
+            </div>
+          </div>
         </aside>
       </section>
     </main>
