@@ -18,22 +18,22 @@ getElement('emergency-box').addEventListener('click', function (e) {
 getElement('emergency-box').addEventListener('click', function (e) {
   if (e.target.className.includes('copy-btn')) {
     const copyBtn = e.target;
+
     const emergencyNum = copyBtn.parentNode.parentNode.children[3].innerText;
 
-    navigator.clipboard
-      .writeText(emergencyNum)
-      .then(() => {
-        alert('Copied The Number: ' + emergencyNum);
+    navigator.clipboard.writeText(emergencyNum).then(() => {
+      alert('Copied The Number: ' + emergencyNum);
 
-        // update counter
-        const copyCount = getElement('copy-count').innerText;
-        let currentCopy = Number(copyCount) + 1;
-        getElement('copy-count').innerText = currentCopy;
-      })
-      .catch(() => {
-        alert('Failed to copy. Please copy manually: ' + emergencyNum);
-      });
-  } else if (e.target.className.includes('call-btn')) {
+      // update counter
+      const copyCount = getElement('copy-count').innerText;
+      let currentCopy = Number(copyCount) + 1;
+      getElement('copy-count').innerText = currentCopy;
+    });
+    //   .catch(() => {
+    //     alert('Failed to copy. Please copy manually: ' + emergencyNum);
+    //   });
+  }
+  if (e.target.className.includes('call-btn')) {
     const callBtn = e.target;
     const title = callBtn.parentNode.parentNode.children[1].innerText;
     const subTitle = callBtn.parentNode.parentNode.children[2].innerText;
@@ -48,6 +48,26 @@ getElement('emergency-box').addEventListener('click', function (e) {
     let currentCoin = Number(coin) - 20;
     getElement('coin').innerText = currentCoin;
 
-    alert('📞Calling ' + subTitle + '' + number);
+    alert('📞Calling ' + subTitle + ': ' + number + '...');
+
+    const historyContainer = getElement('history-container');
+    const newHistory = document.createElement('div');
+    newHistory.innerHTML = `
+    <div
+              class="mt-5 flex justify-between items-center p-5 bg-[#fafafa] rounded-xl"
+            >
+              <div>
+                <p class="font-semibold text-[18px]">${title}</p>
+                <p>${number}</p>
+              </div>
+              <p class="text-[18px]">${new Date().toLocaleTimeString()}</p>
+            </div>
+    `;
+    historyContainer.appendChild(newHistory);
   }
+});
+// clear history
+getElement('clear-btn').addEventListener('click', function () {
+  const historyContainer = getElement('history-container');
+  historyContainer.innerHTML = '';
 });
