@@ -14,11 +14,13 @@ getElement('emergency-box').addEventListener('click', function (e) {
   }
 });
 
-// copy & call
-getElement('emergency-box').addEventListener('click', function (e) {
-  if (e.target.className.includes('copy-btn')) {
-    const copyBtn = e.target;
+// copy & call;
 
+getElement('emergency-box').addEventListener('click', function (e) {
+  const copyBtn = e.target.closest('.copy-btn');
+  const callBtn = e.target.closest('.call-btn');
+
+  if (copyBtn) {
     const emergencyNum = copyBtn.parentNode.parentNode.children[3].innerText;
 
     navigator.clipboard.writeText(emergencyNum).then(() => {
@@ -30,8 +32,8 @@ getElement('emergency-box').addEventListener('click', function (e) {
       getElement('copy-count').innerText = currentCopy;
     });
   }
-  if (e.target.className.includes('call-btn')) {
-    const callBtn = e.target;
+
+  if (callBtn) {
     const title = callBtn.parentNode.parentNode.children[1].innerText;
     const subTitle = callBtn.parentNode.parentNode.children[2].innerText;
     const number = callBtn.parentNode.parentNode.children[3].innerText;
@@ -50,19 +52,18 @@ getElement('emergency-box').addEventListener('click', function (e) {
     const historyContainer = getElement('history-container');
     const newHistory = document.createElement('div');
     newHistory.innerHTML = `
-    <div
-              class="mt-5 flex justify-between items-center p-3 bg-[#fafafa] rounded-xl"
-            >
-              <div>
-                <p class="font-medium ">${title}</p>
-                <p>${number}</p>
-              </div>
-              <p>${new Date().toLocaleTimeString()}</p>
-            </div>
+      <div class="mt-5 flex justify-between items-center p-3 bg-[#fafafa] rounded-xl">
+        <div>
+          <p class="font-medium ">${title}</p>
+          <p>${number}</p>
+        </div>
+        <p>${new Date().toLocaleTimeString()}</p>
+      </div>
     `;
     historyContainer.appendChild(newHistory);
   }
 });
+
 // clear history
 getElement('clear-btn').addEventListener('click', function () {
   const historyContainer = getElement('history-container');
