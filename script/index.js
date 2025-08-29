@@ -29,9 +29,6 @@ getElement('emergency-box').addEventListener('click', function (e) {
       let currentCopy = Number(copyCount) + 1;
       getElement('copy-count').innerText = currentCopy;
     });
-    //   .catch(() => {
-    //     alert('Failed to copy. Please copy manually: ' + emergencyNum);
-    //   });
   }
   if (e.target.className.includes('call-btn')) {
     const callBtn = e.target;
@@ -40,7 +37,7 @@ getElement('emergency-box').addEventListener('click', function (e) {
     const number = callBtn.parentNode.parentNode.children[3].innerText;
     const coin = getElement('coin').innerText;
 
-    if (coin <= 0) {
+    if (coin < 20) {
       alert('❌You Do Not Have Sufficient Coin. At Least Need 20 coins');
       return;
     }
@@ -57,10 +54,10 @@ getElement('emergency-box').addEventListener('click', function (e) {
               class="mt-5 flex justify-between items-center p-3 bg-[#fafafa] rounded-xl"
             >
               <div>
-                <p class="font-semibold ">${title}</p>
+                <p class="font-medium ">${title}</p>
                 <p>${number}</p>
               </div>
-              <p class="">${new Date().toLocaleTimeString()}</p>
+              <p>${new Date().toLocaleTimeString()}</p>
             </div>
     `;
     historyContainer.appendChild(newHistory);
