@@ -54,13 +54,13 @@ getElement('emergency-box').addEventListener('click', function (e) {
     const newHistory = document.createElement('div');
     newHistory.innerHTML = `
     <div
-              class="mt-5 flex justify-between items-center p-5 bg-[#fafafa] rounded-xl"
+              class="mt-5 flex justify-between items-center p-3 bg-[#fafafa] rounded-xl"
             >
               <div>
-                <p class="font-semibold text-[18px]">${title}</p>
+                <p class="font-semibold ">${title}</p>
                 <p>${number}</p>
               </div>
-              <p class="text-[18px]">${new Date().toLocaleTimeString()}</p>
+              <p class="">${new Date().toLocaleTimeString()}</p>
             </div>
     `;
     historyContainer.appendChild(newHistory);
